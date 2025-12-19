@@ -63,4 +63,7 @@ def trade():
         return jsonify({"status": "error", "message": "IQ recusou a ordem"}), 400
 
 if __name__ == '__main__':
-    app.run()
+    # O Railway exige que a gente leia a variável PORT
+    port = int(os.environ.get("PORT", 5000))
+    # host='0.0.0.0' libera o acesso externo (necessário para o n8n acessar)
+    app.run(host='0.0.0.0', port=port)
